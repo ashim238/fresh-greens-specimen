@@ -23,8 +23,10 @@
     --red: #FF3B30;
     --yellow: #FFCC00;
     --pink: #FF2D55;
+    --navy: #041E49;
     --white: #FFFFFF;
     --black: #000000;
+    --system-blue: #007AFF;
     --label-secondary: #3C3C43;
     --label-tertiary: #3D3D3D;
     --muted-secondary: rgba(60, 60, 67, 0.6);
@@ -33,6 +35,9 @@
     --daylight-dawn: #FFB347;
     --daylight-dusk: #C4785A;
     --daylight-night: #2D1B69;
+    --sign-out-subtitle: #F5F5F5;
+    --slightly-dark-orange: #D34400;
+    --slightly-wilted-green: #1F8122;
     --fills-tertiary: rgba(120, 120, 128, 0.12);
     --modal-scrim: rgba(0, 0, 0, 0.2);
     --card-border-subtle: rgba(0, 0, 0, 0.3);
@@ -317,6 +322,144 @@
   }
   footer p { margin: 0 0 8px; }
 
+  /* --- Component catalog --- */
+  .component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .component-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--separator-subtle);
+    padding: 20px;
+  }
+  .component-card .name {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0 0 4px;
+  }
+  .component-card .role {
+    font-size: 12px;
+    line-height: 17px;
+    color: var(--label-secondary);
+    margin: 0 0 12px;
+  }
+  .component-card .variants,
+  .component-card .where {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--muted-secondary);
+    margin: 0 0 4px;
+  }
+
+  /* --- Generic specimen table (zones, screens) --- */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .spec-table th, .spec-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--section-line);
+    font-size: 13px;
+    line-height: 19px;
+    vertical-align: top;
+    color: var(--label-secondary);
+  }
+  .spec-table th {
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted-secondary);
+  }
+  .spec-table .route,
+  .spec-table .mono {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    color: var(--wiltedgreen);
+    white-space: nowrap;
+  }
+  .spec-table .swatch-cell {
+    display: inline-block;
+    width: 36px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid var(--separator-subtle);
+    vertical-align: middle;
+  }
+
+  /* --- Architecture pipeline diagram --- */
+  .pipeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .pipeline .layer {
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid var(--separator-subtle);
+  }
+  .pipeline .layer.adapters { background: rgba(65, 173, 73, 0.06); }
+  .pipeline .layer.scoring  { background: rgba(50, 105, 54, 0.06); }
+  .pipeline .layer.screens  { background: rgba(160, 214, 164, 0.16); }
+  .pipeline .layer .tag {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted-secondary);
+    margin: 0 0 6px;
+    font-weight: 600;
+  }
+  .pipeline .layer .title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--black);
+  }
+  .pipeline .layer .desc {
+    font-size: 13px;
+    line-height: 19px;
+    color: var(--label-secondary);
+    margin: 0 0 12px;
+  }
+  .pipeline .layer .files {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    line-height: 16px;
+    color: var(--muted-secondary);
+  }
+  .pipeline .arrow {
+    text-align: center;
+    font-size: 18px;
+    color: var(--muted-secondary);
+    margin: -2px 0;
+  }
+
+  /* --- Thesis-claim crosswalk --- */
+  .crosswalk td:first-child {
+    width: 38%;
+    font-weight: 500;
+    color: var(--black);
+  }
+  .crosswalk .claim {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+  }
+  .crosswalk .claim.technical { background: rgba(65, 173, 73, 0.18); color: var(--burntgreen); }
+  .crosswalk .claim.cultural  { background: rgba(196, 120, 90, 0.22); color: var(--burntgreen); }
+
   /* --- Print --- */
   @media print {
     body { background: white; }
@@ -436,6 +579,30 @@
           <p class="usage">Role TBD — ask before use.</p>
         </div>
       </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--navy);"></div>
+        <div class="meta">
+          <p class="name">navy</p>
+          <p class="value">#041E49</p>
+          <p class="usage">Safety affordances — the en-route shield button.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--slightly-dark-orange);"></div>
+        <div class="meta">
+          <p class="name">slightlyDarkOrange</p>
+          <p class="value">#D34400</p>
+          <p class="usage">Edge-marker hazard tone — crisp against busy map content at 36pt.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--slightly-wilted-green);"></div>
+        <div class="meta">
+          <p class="name">slightlyWiltedGreen</p>
+          <p class="value">#1F8122</p>
+          <p class="usage">Edge-marker safe tone — the green pair to slightlyDarkOrange.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -457,6 +624,14 @@
           <p class="name">black</p>
           <p class="value">#000000</p>
           <p class="usage">Primary text on light backgrounds.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--sign-out-subtitle); border-bottom: 1px solid var(--separator-subtle);"></div>
+        <div class="meta">
+          <p class="name">signOutSubtitle</p>
+          <p class="value">#F5F5F5</p>
+          <p class="usage">Sign-out parting copy — off-white so it reads as quietly secondary.</p>
         </div>
       </div>
     </div>
@@ -504,6 +679,14 @@
           <p class="name">systemGroupedBackground</p>
           <p class="value">#F2F2F7</p>
           <p class="usage">Recording widget surfaces; iOS list backgrounds.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: var(--system-blue);"></div>
+        <div class="meta">
+          <p class="name">systemBlue</p>
+          <p class="value">#007AFF</p>
+          <p class="usage">The user's location dot — a familiar iOS blue, not a brand pin.</p>
         </div>
       </div>
     </div>
@@ -849,31 +1032,29 @@
 <section>
   <h2>References</h2>
   <p class="lede">
-    Cited in APA 7th edition style. Works retrieved
+    Cited in Chicago author-date style (17th ed.). Works retrieved
     from the open web at the time of thesis preparation.
   </p>
 
   <ul class="references-list">
     <li>
-      American Civil Liberties Union. (n.d.).
-      <em>Know your rights: Stopped by police.</em>
-      Retrieved from
-      <a href="https://www.aclu.org/know-your-rights/stopped-by-police">https://www.aclu.org/know-your-rights/stopped-by-police</a>
+      American Civil Liberties Union. n.d.
+      &ldquo;Know Your Rights: Stopped by Police.&rdquo;
+      Accessed May 12, 2026.
+      <a href="https://www.aclu.org/know-your-rights/stopped-by-police">https://www.aclu.org/know-your-rights/stopped-by-police</a>.
     </li>
     <li>
-      Apple Inc. (n.d.). <em>Human interface guidelines.</em>
-      Apple Developer Documentation. Retrieved from
-      <a href="https://developer.apple.com/design/human-interface-guidelines">https://developer.apple.com/design/human-interface-guidelines</a>
+      Apple Inc. n.d. &ldquo;Human Interface Guidelines.&rdquo;
+      Apple Developer Documentation. Accessed May 12, 2026.
+      <a href="https://developer.apple.com/design/human-interface-guidelines">https://developer.apple.com/design/human-interface-guidelines</a>.
     </li>
     <li>
-      Google LLC. (n.d.). <em>Google Maps</em> [Mobile app].
-      App Store. Retrieved from
-      <a href="https://apps.apple.com/us/app/google-maps/id585027354">https://apps.apple.com/us/app/google-maps/id585027354</a>
+      Google LLC. n.d. <em>Google Maps.</em> Mobile application.
+      <a href="https://apps.apple.com/us/app/google-maps/id585027354">https://apps.apple.com/us/app/google-maps/id585027354</a>.
     </li>
     <li>
-      Waze Mobile Ltd. (n.d.). <em>Waze Navigation &amp; Live Traffic</em> [Mobile app].
-      App Store. Retrieved from
-      <a href="https://apps.apple.com/us/app/waze-navigation-live-traffic/id323229106">https://apps.apple.com/us/app/waze-navigation-live-traffic/id323229106</a>
+      Waze Mobile Ltd. n.d. <em>Waze Navigation &amp; Live Traffic.</em> Mobile application.
+      <a href="https://apps.apple.com/us/app/waze-navigation-live-traffic/id323229106">https://apps.apple.com/us/app/waze-navigation-live-traffic/id323229106</a>.
     </li>
   </ul>
 </section>
